@@ -14,6 +14,8 @@ Some interesting exercises from the book Algorithms,Fourth Edition by Robert Sed
 
 4.每一道练习都附带测试，只需按下run的按钮就可以运行
 
-5.练习中有错误的地请不吝指出 zoffyzhang@foxmail.com
+#Other
 
-6.整个工程预计会持续至2015.7月
+1.练习中有错误的地请不吝指出 zoffyzhang@foxmail.com
+
+2.整个工程预计会持续至2015.7月
