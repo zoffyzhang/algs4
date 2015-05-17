@@ -10,8 +10,8 @@ Some interesting exercises from the book Algorithms,Fourth Edition by Robert Sed
 
 2.从http://algs4.cs.princeton.edu/code/下载 stdlib-package.jar 和 algs4-package.jar (在网页最下方)
 
-2.这两个包添加到algs4工程的build path
+3.这两个包添加到algs4工程的build path
 
-3.每一道练习都附带测试，只需按下run的按钮就可以运行
+4.每一道练习都附带测试，只需按下run的按钮就可以运行
 
-4.练习中有错误的地请不吝指出 zoffyzhang@foxmail.com
+5.练习中有错误的地请不吝指出 zoffyzhang@foxmail.com
