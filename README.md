@@ -16,4 +16,4 @@ Some interesting exercises from the book Algorithms,Fourth Edition by Robert Sed
 
 5.练习中有错误的地请不吝指出 zoffyzhang@foxmail.com
 
-6.整个工程预计会持续两个月
+6.整个工程预计会持续至2015.7月
