@@ -50,6 +50,7 @@ public class No31
 	public static void main(String[] args)
 	{
 		// 输入一个整数及一个<1的double值,如20 0.5
+
 		// StdOut.print("input (for example: 20 0.5) :");
 		// int N = StdIn.readInt();
 		// double chance = StdIn.readDouble();
