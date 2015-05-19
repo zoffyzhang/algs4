@@ -2,16 +2,14 @@ package Chapter1.Section1;
 
 import java.awt.geom.Point2D;
 import edu.princeton.cs.introcs.Draw;
-import edu.princeton.cs.introcs.StdIn;
-import edu.princeton.cs.introcs.StdOut;
 import edu.princeton.cs.introcs.StdRandom;
 
 /**
  * @Author Zoffy Zhang
  * @GitHub https://github.com/ZoffyZhang
- * @Date   Mar 19, 2015
+ * @Date Mar 19, 2015
  */
-//1.1.31
+// 1.1.31
 public class No31
 {
 	public static void DoTheJob(int N, double chance)
@@ -24,7 +22,7 @@ public class No31
 		d.circle(.5, .5, .4);// 题目要求大小为0.05太小了，改成0.4了
 		d.setPenRadius(.008);
 
-		//计算每个点的位置
+		// 计算每个点的位置
 		double theta = 2 * Math.PI / N;
 		for (int i = 0; i < N; i++)
 		{
@@ -51,12 +49,13 @@ public class No31
 
 	public static void main(String[] args)
 	{
-		// 输入一个整数及一个<1的double值,如20 0.5ֵ,��20 0.5
-		StdOut.print("input (for example: 20 0.5) :");
-		int N = StdIn.readInt();
-		double chance = StdIn.readDouble();
+		// 输入一个整数及一个<1的double值,如20 0.5
+		// StdOut.print("input (for example: 20 0.5) :");
+		// int N = StdIn.readInt();
+		// double chance = StdIn.readDouble();
+		int N = 100;
+		double chance = 0.1;
 
 		No31.DoTheJob(N, chance);
 	}
 }
-
