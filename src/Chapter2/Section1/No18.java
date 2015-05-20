@@ -16,17 +16,17 @@ import edu.princeton.cs.introcs.StdRandom;
  * @Date May 20, 2015
  */
 
-public class No17
+public class No18
 {
 	public static void main(String[] args)
 	{
-		int N = 100;
+		int N = 200;
 		Double[] randomData = new Double[N];
 		for (int i = 0; i < N; i++)
-			randomData[i] = StdRandom.uniform(-80.0, 120.0);
+			randomData[i] = StdRandom.uniform(-40.0, 60.0);
 
 		JFrame frame = new JFrame("Sort Animation");
-		frame.getContentPane().add(new SortPanel(randomData, 1));
+		frame.getContentPane().add(new SortTrackPanel(randomData, 1));
 		frame.pack();
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setVisible(true);
@@ -34,23 +34,17 @@ public class No17
 	}
 }
 
-/**
- * <p>
- * 1.本算法对每一次数组发生变化都生成一帧画面，以每秒重绘SortPanel.FPS张图片来生成动画。
- * <p>
- * 2.动画的持续时间只与数组的变动次数有关，与算法时间复杂度并非线性关系，因为动画忽略了比较所花费的时间
- */
-class SortPanel extends JPanel
+class SortTrackPanel extends JPanel
 {
 	private static final long serialVersionUID = 7912515918599760257L;
 
 	private final int maxWidth = Toolkit.getDefaultToolkit().getScreenSize().width;
-	private final int height = 600;	// Panel的height
+	private final int height = 80;	// Panel的height
 	private int width;
 
 	// 长方柱属性
 	private double yScale;
-	private int rectangleWidth = 5;
+	private int rectangleWidth = 3;
 	private int gap;				// 柱间间隔
 
 	private Double[] randomData;
@@ -58,7 +52,7 @@ class SortPanel extends JPanel
 	public static final long FPS = 24;
 	public static final long SPF = 1000 / FPS;	// Second Per Frames
 
-	public SortPanel(Double[] randomData, int gap)
+	public SortTrackPanel(Double[] randomData, int gap)
 	{
 		this.randomData = randomData;
 		this.gap = gap;
@@ -69,7 +63,7 @@ class SortPanel extends JPanel
 			rectangleWidth = (maxWidth - gap * dataLen) / dataLen;
 		}
 		else
-			width = (rectangleWidth + gap) * dataLen;
+			width = (rectangleWidth+gap) * dataLen;
 		setPreferredSize(new Dimension(width, height));
 
 		// 计算 y scale
@@ -94,7 +88,7 @@ class SortPanel extends JPanel
 
 	private void startSortThread()
 	{
-		Insertion.sort(randomData);
+		Selection.sort(randomData);
 	}
 
 	private void startPaintThread()
@@ -148,7 +142,7 @@ class SortPanel extends JPanel
 
 	private void drawChangineRect(Graphics g)
 	{
-		int i = Insertion.changing;
+		int i = Selection.changing;
 		g.setColor(Color.RED);
 
 		if (randomData[i] >= 0)
@@ -162,7 +156,7 @@ class SortPanel extends JPanel
 
 		}
 
-		i = Insertion.position;
+		i=Selection.position;
 		g.setColor(Color.BLUE);
 
 		if (randomData[i] >= 0)
@@ -175,13 +169,11 @@ class SortPanel extends JPanel
 					rectangleWidth, -leftButtomY, true);
 
 		}
-
 	}
 
 	private void setCoordinate(Graphics g)
 	{
 		Graphics2D g2d = (Graphics2D) g;
-		// 记住一定要设置了原点后再用scale反转，图像画不出来让我找了两天资料!!!!!
 		g2d.translate(0, height / 2);	// 设置原点
 		g2d.scale(1.0, -1.0);			// 反转y轴
 		g2d.draw(new Line2D.Double(0.0, 0.0, width, 0.0)); // 画x轴
@@ -189,7 +181,7 @@ class SortPanel extends JPanel
 
 }
 
-class Insertion
+class Selection
 {
 	protected static int changing;
 	protected static int position;
@@ -199,27 +191,29 @@ class Insertion
 	{
 		new Thread()
 		{
+			@Override
 			public void run()
 			{
-				for (int i = 1; i < a.length; i++)
-					for (int j = i; j > 0; j--)
-						if (less(a[j], a[j - 1]))
-						{
-							position = i;
-							changing = j - 1;
-							exch(a, j, j - 1);
-							try
-							{
-								sleep(SortPanel.SPF);
-							} catch (InterruptedException e)
-							{
-								// TODO Auto-generated catch block
-								e.printStackTrace();
-							}
-						}
-			};
+				for (int i = 0; i < a.length; i++)
+				{
+					int min = i;
+					for (int j = i + 1; j < a.length; j++)
+						if (less(a[j], a[min]))
+							min = j;
+					position=i;
+					changing = min;
+					exch(a, i, min); // 不管怎样都会执行
+					try
+					{
+						sleep(SortTrackPanel.SPF);
+					} catch (InterruptedException e)
+					{
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				}
+			}
 		}.start();
-
 	}
 
 	@SuppressWarnings("rawtypes")
