@@ -20,7 +20,7 @@ public class No20
 		Scanner scanner;
 		try
 		{
-			scanner = new Scanner(new File("src/Chapter1/Section5/TinyUF.txt"));
+			scanner = new Scanner(new File("data/TinyUF.txt"));
 			while (scanner.hasNext())
 			{
 				int p = scanner.nextInt();
