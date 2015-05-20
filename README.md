@@ -8,14 +8,12 @@ Some interesting exercises from the book Algorithms,Fourth Edition by Robert Sed
 #How To Use
 1.使用Eclipse import本工程
 
-2.从http://algs4.cs.princeton.edu/code/ 下载 stdlib-package.jar 和 algs4-package.jar (在网页最下方)
+2.将stdlib-package.jar 和 algs4-package.jar添加到本工程的build path
 
-3.这两个包添加到algs4工程的build path
-
-4.每一道练习都附带测试，只需按下run的按钮就可以运行
+3.每一道练习都附带测试，只需按下run的按钮就可以运行
 
 #Other
 
 1.练习中有错误的地请不吝指出 zoffyzhang@foxmail.com
 
-2.整个工程预计会持续至2015.7月
+2.JDK版本应高于1.7
