@@ -16,6 +16,4 @@ Some interesting exercises from the book Algorithms,Fourth Edition by Robert Sed
 
 1.练习中有错误的地请不吝指出 zoffyzhang@foxmail.com
 
-2.整个工程预计会持续至2015.7月
-
-3.JDK版本应高于1.7
+2.JDK版本应高于1.7
