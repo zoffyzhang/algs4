@@ -1,5 +1,5 @@
 # Intruction
-Some interesting exercises from the book Algorithms,Fourth Edition by Robert Sedgewick and Kevin Wayne.
+Some answers to exercises from the book Algorithms,Fourth Edition by Robert Sedgewick and Kevin Wayne.
 
 一些算法第4版的习题答案。
 
