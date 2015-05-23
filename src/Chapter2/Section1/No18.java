@@ -89,10 +89,10 @@ class SortTrackPanel extends JPanel
 		yScale = 80 / 2 / max;
 
 		Selection.sort(randomData, num);
-		drawAllRect(randomData);
+		storeLocaeData(randomData);
 	}
 
-	private void drawAllRect(Double[] randomData)
+	private void storeLocaeData(Double[] randomData)
 	{
 		localeData = new Double[randomData.length];
 		for (int i = 0; i < randomData.length; i++)
