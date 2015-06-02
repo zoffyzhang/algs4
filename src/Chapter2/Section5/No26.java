@@ -15,7 +15,7 @@ public class No26
 {
 	public static void main(String[] args)
 	{
-		int num = 6;
+		int num = 8;
 		Point2D.Double[] points = new Point2D.Double[num];
 		points[0] = new Point2D.Double(0.1, 0.8);
 		points[1] = new Point2D.Double(0.9, 0.1);
@@ -23,12 +23,14 @@ public class No26
 		points[3] = new Point2D.Double(0.5, 0.8);
 		points[4] = new Point2D.Double(0.3, 0.9);
 		points[5] = new Point2D.Double(0.2, 0.7);
+		points[6] = new Point2D.Double(0.0, 0.5);
+		points[7] = new Point2D.Double(0.4, 0.6);
 
 		// construct 以使 MakePointsLogical.ht 得到相应的逻辑关系
 		new MakePointsLogical(points);
 
 		// sort
-		Arrays.sort(points, new YnXOrder());
+		Arrays.sort(points, new OffAngleOrder());
 
 		// draw
 		for (int i = 0; i < points.length - 1; i++)
@@ -43,7 +45,7 @@ public class No26
 
 // This class should be called after the MakePointsLogical class has been
 // constructed
-class YnXOrder implements Comparator<Point2D.Double>
+class OffAngleOrder implements Comparator<Point2D.Double>
 {
 
 	@Override
