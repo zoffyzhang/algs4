@@ -87,6 +87,50 @@ class MathSET<Key extends Comparable<Key>> implements Iterable<Key>
 		size++;
 	}
 
+	/*
+	 * 这是一种错误的方法，写出这种方法是因为受递归思想的干扰，但while结束后得到的cur却是没有分配空间的，
+	 * 意味着前一个结点的next并没有确切的指向， 所以链表是断的
+	 */
+	// public void add(Key key)
+	// {
+	// Node cur=first;
+	// while(cur!=null)
+	// cur=cur.next;
+	// cur=new Node(key);
+	// }
+
+	/*
+	 * 下面这样写是对的
+	 */
+	// public void add(Key key)
+	// {
+	// if(first==null)
+	// {
+	// first=new Node(key);
+	// return;
+	// }
+	// Node cur=first;
+	// while(cur.next!=null)
+	// cur=cur.next;
+	// cur.next=new Node(key);
+	// }
+
+	/*
+	 * add的递归方式,启发自BST
+	 */
+	public void r_add(Key key)
+	{
+		first = recursive_add(first, key);
+	}
+
+	private Node recursive_add(Node node, Key key)
+	{
+		if (node == null)
+			return new Node(key);
+		node.next = recursive_add(node.next, key);
+		return node;
+	}
+
 	public void delete(Key key)
 	{
 		if (!contains(key))
