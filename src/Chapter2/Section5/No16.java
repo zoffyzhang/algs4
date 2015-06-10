@@ -24,14 +24,16 @@ class California
 		for (int i = 0; i < s.length(); i++)
 			specOrder[i] = s.charAt(i);
 
-		String[] tmpString = { "KOBE", "RED", "WITNEY", "WHITE", "JACKSON",
-				"JACK", "OBAMA", "FREEMAN", "JAMES", "ROBERT" };
+		// data
+		String[] tmpString = { "KOBE", "RED", "WITNEY", "WHITE", "JACKSON", "JACK", "OBAMA",
+				"FREEMAN", "JAMES", "ROBERT" };
 		MyString[] names = new MyString[tmpString.length];
 		for (int i = 0; i < tmpString.length; i++)
 		{
 			names[i] = new MyString(tmpString[i]);
 		}
 
+		// sort with specified order
 		Arrays.sort(names, new CharsOrder(specOrder));
 		for (int i = 0; i < names.length; i++)
 		{
