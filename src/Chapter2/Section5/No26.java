@@ -26,33 +26,39 @@ public class No26
 		points[6] = new Point2D.Double(0.0, 0.5);
 		points[7] = new Point2D.Double(0.4, 0.6);
 
-		// construct 以使 MakePointsLogical.ht 得到相应的逻辑关系
-		new MakePointsLogical(points);
-
 		// sort
-		Arrays.sort(points, new OffAngleOrder());
+		Arrays.sort(points, new OffAngleOrder(points));
 
 		// draw
 		for (int i = 0; i < points.length - 1; i++)
 		{
-			StdDraw.line(points[i].x, points[i].y, points[i + 1].x,
-					points[i + 1].y);
+			StdDraw.line(points[i].x, points[i].y, points[i + 1].x, points[i + 1].y);
 		}
-		StdDraw.line(points[num - 1].x, points[num - 1].y, points[0].x,
-				points[0].y);
+		StdDraw.line(points[num - 1].x, points[num - 1].y, points[0].x, points[0].y);
 	}
 }
 
-// This class should be called after the MakePointsLogical class has been
-// constructed
+/**
+ * 
+ * 
+ */
 class OffAngleOrder implements Comparator<Point2D.Double>
 {
+	private Hashtable<Point2D.Double, Double> ht;
 
+	// MakePointsLogical()只会被初始化一次
+	public OffAngleOrder(Point2D.Double[] points)
+	{
+		new MakePointsLogical(points);
+		this.ht = MakePointsLogical.ht;
+	}
+
+	// compare会被多次调用
 	@Override
 	public int compare(Point2D.Double o1, Point2D.Double o2)
 	{
-		double cmp1 = MakePointsLogical.ht.get(o1);
-		double cmp2 = MakePointsLogical.ht.get(o2);
+		double cmp1 = ht.get(o1);
+		double cmp2 = ht.get(o2);
 
 		if (cmp1 < cmp2)
 			return -1;
@@ -111,6 +117,7 @@ class MakePointsLogical
 
 	}
 
+	// 这个class的计算结果将被放入ht中
 	private void packUp(Point2D.Double[] points)
 	{
 		for (int i = 0; i < points.length; i++)
