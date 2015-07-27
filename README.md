@@ -5,6 +5,9 @@ Some answers to exercises from the book *Algorithms,Fourth Edition* by Robert Se
 
 ![img](http://img4.douban.com/lpic/s24409638.jpg)
 
-1.练习中有错误的地请不吝指出 zoffyzhang@foxmail.com
+1.需要将algs4-package.jar和stdlib-package.jar添加到Build Path中
 
 2.JDK版本应不低于1.7
+
+3.练习中有错误的地请不吝指出 zoffyzhang@foxmail.com
+
